@@ -1,6 +1,5 @@
 import js
 import pandas as pd
-import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 from pyodide.http import open_url
@@ -114,7 +113,7 @@ def bar_chart (filtered_df):
 #create and format a table with plotly graph objects
 def table_chart (filtered_df):
     table_daily_total = filtered_df.groupby("Date")["Water(ml)"].sum().reset_index()
-    table_daily_total["Daily_Change"] = np.round(table_daily_total["Water(ml)"].pct_change()*100,1).fillna(0).apply(lambda x: f"+{x}" if x > 0 else str(x)) + "%"
+    table_daily_total["Daily_Change"] = table_daily_total["Water(ml)"].pct_change().mul(100).round(1).fillna(0).apply(lambda x: f"+{x}" if x > 0 else str(x)) + "%"
     table_daily_total["Daily_Change"] = table_daily_total["Daily_Change"].astype("category")
 
     font_color = ["#333131", "#333131",
