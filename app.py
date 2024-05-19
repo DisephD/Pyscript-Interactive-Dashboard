@@ -365,7 +365,7 @@ def plot(selected_month):
 
 
 #create a dropdown event catcher
-def dropdown_event():
+def dropdown_event(evt):
     selected_month = js.document.getElementById("selected_month").value
     plot(selected_month)
 
