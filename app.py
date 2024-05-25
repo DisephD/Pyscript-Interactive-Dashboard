@@ -7,6 +7,14 @@ from pyscript import display
 import warnings
 warnings.filterwarnings("ignore")
 
+@app.after_request
+def set_response_headers (response) :
+  response. headers ['Cross-Origin-Embedder-Policy'] = 'credentialless'
+  response. headers ['X-Custom-Header'] = 'value'
+  response. headers ['Cross-Origin-Opener-Policy'] = 'same-origin'
+  response. headers ['Cross-Origin-Resource-Policy'] = 'require-corp'
+  return response
+
 url = "https://raw.githubusercontent.com/DisephD/pyscript_tutorial/main/drink_water_data.csv"
 
 data = pd.read_csv(open_url(url), parse_dates=["Date"])
@@ -182,13 +190,5 @@ def dropdown_event(evt):
     selected_month = js.document.getElementById("selected_month").value
     plot(selected_month)
 
- 
-@app.after_request
-def set_response_headers (response) :
-  response. headers ['Cross-Origin-Embedder-Policy'] = 'credentialless'
-  response. headers ['X-Custom-Header'] = 'value'
-  response. headers ['Cross-Origin-Opener-Policy'] = 'same-origin'
-  response. headers ['Cross-Origin-Resource-Policy'] = 'require-corp'
-  return response
 
 plot("January")
