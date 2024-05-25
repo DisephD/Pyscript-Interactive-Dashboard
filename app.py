@@ -9,10 +9,10 @@ warnings.filterwarnings("ignore")
 
 @app.after_request
 def set_response_headers (response) :
-  response. headers ['Cross-Origin-Embedder-Policy'] = 'credentialless'
+  response. headers ['Cross-Origin-Embedder-Policy'] = 'require-corp'
   response. headers ['X-Custom-Header'] = 'value'
   response. headers ['Cross-Origin-Opener-Policy'] = 'same-origin'
-  response. headers ['Cross-Origin-Resource-Policy'] = 'require-corp'
+  response. headers ['Cross-Origin-Resource-Policy'] = 'cross-origin'
   return response
 
 url = "https://raw.githubusercontent.com/DisephD/pyscript_tutorial/main/drink_water_data.csv"
