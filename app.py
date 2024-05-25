@@ -188,7 +188,7 @@ def set_response_headers (response) :
   response. headers ['Cross-Origin-Embedder-Policy'] = 'credentialless'
   response. headers ['X-Custom-Header'] = 'value'
   response. headers ['Cross-Origin-Opener-Policy'] = 'same-origin'
-  response. headers ['Cross-Origin-Resource-Policy'] = 'cross-origin'
-return response
+  response. headers ['Cross-Origin-Resource-Policy'] = 'require-corp'
+  return response
 
 plot("January")
